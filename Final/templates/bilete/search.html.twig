@@ -1,0 +1,59 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+<hr class="new5">
+
+<h2>Tabelul Bilete</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>ID</th>
+<th>Locul Plecare</th>
+<th>Data Plecare</th>
+<th>Ora Plecare</th>
+<th>Destinatia</th>
+<th>Data Sosire</th>
+<th>Ora Sosire</th>
+<th>Calatorul</th>
+<th><div class="d-flex justify-content-center">Options</div></th>
+</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>{{bilet.id}}</td>
+		<td>
+			{{bilet.LocPlecare}}
+		</td>
+		<td>
+            {{bilet.DataPlecare|date("m/d/Y") }}
+		</td>
+		<td>
+            {{bilet.OraPlecare|date("h:i:s")}}
+		</td>
+        <td>
+            {{bilet.Destinatia}}
+		</td>
+        <td>
+            {{bilet.DataSosire|date("m/d/Y")}}
+		</td>
+        <td>
+            {{bilet.OraSosire|date("h:i:s")}}
+		</td>
+          <td>
+           {{bilet.calator.id}}
+		</td>
+        <td>
+            <div class="d-flex justify-content-around">
+            <a href="{{path('edit_bilete',{id:bilet.id})}}">Update</a>
+            <a class="text-danger" href="{{path('delete_bilete',{id:bilet.id})}}">Delete</a>
+            </div>
+        </td>
+	</tr>
+</tbody>
+</table>
+
+<hr class="new5">
+
+
+{% endblock %}
